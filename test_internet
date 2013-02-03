@@ -1,0 +1,5 @@
+#!/bin/bash
+# Test if internet connection is active
+# fails (1) if no connection, 0 otherwise
+ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null
+

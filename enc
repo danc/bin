@@ -1,0 +1,4 @@
+#!/bin/bash
+# Usage : enc file_or_directory gpg_key
+# gpg_key can be a part of description (uid) obtained from  gpg --list-keys
+tar cvz $1  | gpg -e -r $2 -o `basename $1`.tar.gz.gpg

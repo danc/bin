@@ -1,0 +1,14 @@
+#!/bin/bash
+# Lists directories and files at the current date in a set of files for offline inventory
+REP=`basename $PWD`
+D=`dirname $PWD`
+#OUTF=~/itinerant/inventaires/`basename $D`-$REP-`date +'%Y%m%d'`.csv
+OUTF=~/itinerant/inventaires/`basename $D`-$REP.csv
+du --exclude=.git | awk -F'/' '{print $2";"$3";"$4";"$5}' | sort > $OUTF
+
+#OUTF2=~/itinerant/inventaires/`basename $D`-$REP-files-`date +'%Y%m%d'`.csv
+OUTF2=~/itinerant/inventaires/`basename $D`-$REP-files.csv
+du --exclude=.git -a | awk -F'/' '{print $2";"$3";"$4";"$5}' | sort > $OUTF2
+
+echo $OUTF
+

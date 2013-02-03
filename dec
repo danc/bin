@@ -1,0 +1,5 @@
+#!/bin/bash
+# reverse of enc , decrpyts and detars file or directory
+# Usage : dec dir.tar.gz.gpg
+gpg  -d $1 |  tar  xzv 
+
