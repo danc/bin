@@ -1,0 +1,3 @@
+#!/bin/bash
+#mplayer http://players.tv-radio.com/metafichiers/france_culture_mp3-128k.pls
+mplayer http://mp3.live.tv-radio.com/franceculture/all/franceculturehautdebit.mp3
