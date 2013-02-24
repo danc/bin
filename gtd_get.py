@@ -14,7 +14,7 @@ from wordpress_xmlrpc import Client, WordPressPost
 from wordpress_xmlrpc.methods.posts import GetPosts
 from sys import argv
 from getpass import getpass
-from os import getenv
+from os import getenv, stat
 import ConfigParser
 
 home = getenv('HOME')
@@ -43,3 +43,5 @@ for post in posts:
 		f.write(post.content.encode('utf-8'))
 		f.close
 
+f = open( ".timestamp", "wb")
+f.close

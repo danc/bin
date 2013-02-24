@@ -14,7 +14,7 @@ from wordpress_xmlrpc import Client, WordPressPost
 from wordpress_xmlrpc.methods.posts import GetPosts, NewPost, EditPost
 from sys import argv
 from getpass import getpass
-from os import getenv
+from os import getenv, stat
 import ConfigParser
 
 home = getenv('HOME')
@@ -29,13 +29,15 @@ pwd = getpass("Password --> ")
 wp = Client(url+xmlrpc, login, pwd)
 
 posts = wp.call(GetPosts())
+timestamp = stat(".timestamp").st_mtime
 for post in posts:
 	do_sync = 0
 
 	for term in post.terms:
 #		print term.name
 		if term.name == "sync":
-			do_sync = 1
+			if stat(post.title).st_mtime > timestamp:
+				do_sync = 1
 #	if argv[1:]:
 #		if argv[1] == post.title:
 	if do_sync:
