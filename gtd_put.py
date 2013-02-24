@@ -51,4 +51,5 @@ for post in posts:
 			wp.call(EditPost(post.id, post))
 			f.close
 			print "Sync'ed : " + post.title
-#print wp.call(GetUserInfo())
+f = open( ".timestamp", "wb")
+f.close
